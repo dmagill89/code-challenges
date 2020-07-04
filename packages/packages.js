@@ -16,6 +16,8 @@ function hasDependency(package, dependency) {
 
   if (package.name === dependency) {
     return true;
+  } else {
+
   }
 }
 
