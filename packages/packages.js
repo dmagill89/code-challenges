@@ -11,14 +11,25 @@
  * @param {String} dependency 
  */
 function hasDependency(package, dependency) {
-  const dependencies = package.dependencies;
-
+  const seen = new Set();
 
   if (package.name === dependency) {
     return true;
-  } else {
-
   }
+
+  const recurse = (package) => {
+    const dependencies = package.dependencies;
+
+    dependencies.forEach(dep => {
+      if (!seen.has(dep.name)) {
+        seen.add(dep.name);
+        recurse(dep);
+      }
+    });
+  };
+
+  recurse(package);
+  return seen.has(dependency);
 }
 
 // package = {
