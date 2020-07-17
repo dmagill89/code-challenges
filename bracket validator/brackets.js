@@ -18,7 +18,7 @@ var isValid = function (s) {
       return false;
     } else if (isLeft(c)) {
       stack.push(popped);
-      leftStack.push(c);
+      stack.push(c);
     }
   }
 
